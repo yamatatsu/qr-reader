@@ -20,11 +20,12 @@ export default (props) => {
     default: {
       return (
         <ul>
-          {['FileUploader', 'QrReader'].map((text) => (
-            <li key={text}>
-              <a href="#" onClick={to(text)}>{text}</a>
-            </li>
-          ))}
+          <li>
+            <a href="#" onClick={to('QrReader')}>QrReader</a>
+          </li>
+          <li>
+            <a href="#" onClick={to('FileUploader')}>ボツ</a>
+          </li>
         </ul>
       )
     }
