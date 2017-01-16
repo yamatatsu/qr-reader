@@ -87,5 +87,6 @@
   },
   "eslintConfig": {
     "extends": "react-app"
-  }
+  },
+  "homepage": "http://yamatatsu.github.io/qr-reader"
 }
