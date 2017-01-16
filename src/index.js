@@ -3,20 +3,26 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-const state = {
+const initialState = {
   disp: 'Links',
+  textByQr: null,
 }
 
 const actions = {
-  changeDisp: (state, disp) => ({ ...state, disp })
+  changeDisp: (state, disp) => ({ ...state, disp }),
+  setTextByQr: (state, textByQr) => ({ ...state, textByQr })
 }
 
-render(state, initDispatcher(actions))
+render(initialState, initDispatcher(actions))
 
 function initDispatcher (actions) {
   function dispatcher (state) {
     return (actionName, ...args) => {
       const newState = actions[actionName](state, ...args)
+
+      if (module.hot) {
+        module.hot.dispose(data => data.state = newState)
+      }
       render(newState, dispatcher)
     }
   }

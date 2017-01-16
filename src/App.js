@@ -1,15 +1,32 @@
 import React from 'react'
 import FileUploader from './components/FileUploader'
+import QrReader from './components/QrReader'
 
 export default (props) => {
-  if (props.disp === 'FileUploader') {
-    return <FileUploader dispatch={props.dispatch} />
+  const { dispatch, textByQr } = props
+
+  const to = disp => () => dispatch('changeDisp', disp)
+
+  const backToLinks = to('Links')
+
+  switch (props.disp) {
+    case 'FileUploader': {
+      return <FileUploader backToLinks={backToLinks} />
+    }
+    case 'QrReader': {
+      return <QrReader {...{ textByQr, backToLinks, dispatch }} />
+    }
+
+    default: {
+      return (
+        <ul>
+          {['FileUploader', 'QrReader'].map((text) => (
+            <li key={text}>
+              <a href="#" onClick={to(text)}>{text}</a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
   }
-  return (
-    <ul>
-      <li>
-        <a href="#" onClick={() => props.dispatch('changeDisp', 'FileUploader')}>FileUploader</a>
-      </li>
-    </ul>
-  )
 }

@@ -28,7 +28,7 @@ class FileUploader extends Component {
       <div>
         <header>
           <h1>ファイル選択（カメラ起動）テスト</h1>
-          <button onClick={() => this.props.dispatch('changeDisp', 'Links')}>戻る</button>
+          <button onClick={this.props.backToLinks}>戻る</button>
         </header>
         <main>
           <p>元画像 <span id="src-width-height">width: height: </span></p>
