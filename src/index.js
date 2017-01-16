@@ -13,16 +13,13 @@ const actions = {
   setTextByQr: (state, textByQr) => ({ ...state, textByQr })
 }
 
-render(initialState, initDispatcher(actions))
+const dispatcher = initDispatcher(actions)
+dispatcher(initialState)()
 
 function initDispatcher (actions) {
   function dispatcher (state) {
     return (actionName, ...args) => {
-      const newState = actions[actionName](state, ...args)
-
-      if (module.hot) {
-        module.hot.dispose(data => data.state = newState)
-      }
+      const newState = (actionName && actions[actionName]) ? actions[actionName](state, ...args) : state
       render(newState, dispatcher)
     }
   }
@@ -30,8 +27,17 @@ function initDispatcher (actions) {
 }
 
 function render (state, dispatcher) {
-  ReactDOM.render(
-    <App {...state} dispatch={dispatcher(state)} />,
-    document.getElementById('root')
-  )
+  if (module.hot) {
+    const rootProps = (module.hot.data) ? module.hot.data.state : { ...state, dispatch: dispatcher(state) }
+    module.hot.dispose(data => data.state = rootProps)
+
+    ReactDOM.render(
+      <App {...rootProps} />,
+      document.getElementById('root')
+    )
+  }
+}
+
+if (module.hot) {
+  module.hot.accept()
 }
