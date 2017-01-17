@@ -19,6 +19,7 @@ dispatcher(initialState)()
 function initDispatcher (actions) {
   function dispatcher (state) {
     return (actionName, ...args) => {
+      console.log(`dispatched actionName: ${actionName}, args: [${args.join(', ')}]`)
       const newState = (actionName && actions[actionName]) ? actions[actionName](state, ...args) : state
       render(newState, dispatcher)
     }
