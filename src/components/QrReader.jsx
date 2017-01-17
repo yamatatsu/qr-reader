@@ -15,11 +15,8 @@ export default (props) => {
           textByQr ?
             <button onClick={() => dispatch('setTextByQr', null)}>reset</button> :
             <QrReader
-              previewStyle={{
-                height: 240,
-                width: 320,
-              }}
-              inputStyle={legacyMode && { display: 'block' }}
+              previewStyle={legacyMode ? null : { height: 240, width: 320 }}
+              inputStyle={legacyMode ? { display: 'block' } : null}
               handleError={err => console.log(err)}
               handleScan={data => dispatch('setTextByQr', data)}
               legacyMode={legacyMode}
