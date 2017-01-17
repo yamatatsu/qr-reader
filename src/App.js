@@ -20,10 +20,10 @@ export default (props) => {
       return (
         <ul>
           <li>
-            <a href="#" onClick={to('QrReader')}>video type</a>
+            <a href="#" onClick={to('QrReader')}>webRTC</a>
           </li>
           <li>
-            <a href="#" onClick={to('FileUploader')}>file upload type</a>
+            <a href="#" onClick={to('FileUploader')}>FileAPI</a>
           </li>
         </ul>
       )
