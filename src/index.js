@@ -28,15 +28,15 @@ function initDispatcher (actions) {
 }
 
 function render (state, dispatcher) {
+  let rootProps = { ...state, dispatch: dispatcher(state) }
   if (module.hot) {
-    const rootProps = (module.hot.data) ? module.hot.data.state : { ...state, dispatch: dispatcher(state) }
+    rootProps = (module.hot.data) ? module.hot.data.state : rootProps
     module.hot.dispose(data => data.state = rootProps)
-
-    ReactDOM.render(
-      <App {...rootProps} />,
-      document.getElementById('root')
-    )
   }
+  ReactDOM.render(
+    <App {...rootProps} />,
+    document.getElementById('root')
+  )
 }
 
 if (module.hot) {
