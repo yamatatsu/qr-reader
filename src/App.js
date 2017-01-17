@@ -11,7 +11,7 @@ export default (props) => {
 
   switch (props.disp) {
     case 'FileUploader': {
-      return <FileUploader backToLinks={backToLinks} />
+      return <FileUploader {...{ textByQr, backToLinks, dispatch }} />
     }
     case 'QrReader': {
       return <QrReader {...{ textByQr, backToLinks, dispatch }} />
@@ -21,10 +21,10 @@ export default (props) => {
       return (
         <ul>
           <li>
-            <a href="#" onClick={to('QrReader')}>QrReader</a>
+            <a href="#" onClick={to('QrReader')}>video type</a>
           </li>
           <li>
-            <a href="#" onClick={to('FileUploader')}>ボツ</a>
+            <a href="#" onClick={to('FileUploader')}>file upload type</a>
           </li>
         </ul>
       )

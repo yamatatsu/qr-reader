@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const actions = {
-  changeDisp: (state, disp) => ({ ...state, disp }),
+  changeDisp: (state, disp) => ({ ...state, disp, textByQr: null }),
   setTextByQr: (state, textByQr) => ({ ...state, textByQr })
 }
 
