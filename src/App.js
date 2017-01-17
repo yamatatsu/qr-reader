@@ -1,5 +1,4 @@
 import React from 'react'
-import FileUploader from './components/FileUploader'
 import QrReader from './components/QrReader'
 
 export default (props) => {
@@ -11,7 +10,7 @@ export default (props) => {
 
   switch (props.disp) {
     case 'FileUploader': {
-      return <FileUploader {...{ textByQr, backToLinks, dispatch }} />
+      return <QrReader legacyMode {...{ textByQr, backToLinks, dispatch } } />
     }
     case 'QrReader': {
       return <QrReader {...{ textByQr, backToLinks, dispatch }} />
