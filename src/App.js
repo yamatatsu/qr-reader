@@ -8,6 +8,13 @@ export default function App(props) {
       {({ values, remove, add }) => (
         <div>
           <div>
+            <a href="https://github.com/yamatatsu/qr-reader">
+              https://github.com/yamatatsu/qr-reader
+            </a>
+            <br />
+            <br />
+          </div>
+          <div>
             <QrReader
               style={{ width: 400 }}
               handleError={err => console.log(err)}
