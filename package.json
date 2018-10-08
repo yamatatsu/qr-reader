@@ -50,6 +50,7 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-powerplug": "^1.0.0-rc.1",
     "react-qr-reader": "^0.3.2"
   },
   "scripts": {
