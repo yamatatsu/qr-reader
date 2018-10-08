@@ -1,6 +1,6 @@
-import React from 'react'
-import QrReader from 'react-qr-reader'
-import { Set } from 'react-powerplug'
+import React from 'react';
+import QrReader from 'react-qr-reader';
+import { Set } from 'react-powerplug';
 
 export default function App(props) {
   return (
@@ -18,7 +18,9 @@ export default function App(props) {
           </div>
           {values.map(text => (
             <div key={text}>
-              <a href={text} target='_blank' rel="noopener noreferrer">{text}</a>
+              <a href={text} target="_blank" rel="noopener noreferrer">
+                {text}
+              </a>
             </div>
           ))}
         </div>
