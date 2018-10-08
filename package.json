@@ -4,18 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel index.html"
+    "start": "parcel index.html",
+    "prebuild": "rm -rf dist",
+    "build": "parcel build index.html --no-cache --no-source-maps --public-url='/qr-reader'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yamatatsu/qr-reader.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "yamatatsu",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/yamatatsu/qr-reader/issues"
   },
-  "homepage": "https://github.com/yamatatsu/qr-reader#readme",
+  "homepage": "http://yamatatsu.github.io/qr-reader",
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
